@@ -15,7 +15,8 @@
     "historicalContext",
     "specific",
     "relationships",
-    "metadata"
+    "metadata",
+    "references"
   ],
   "properties": {
     "id": {
@@ -311,6 +312,33 @@
         }
       },
       "additionalProperties": false
+    },
+    "references": {
+      "type": "array",
+      "description": "External references, citations, papers, books, standards, repositories, datasets, or knowledge sources associated with the conceptual node.",
+      "items": {
+        "type": "object",
+        "required": [
+          "title",
+          "description"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Canonical title or name of the reference."
+          },
+          "link": {
+            "type": "string",
+            "format": "uri",
+            "description": "Optional URL, DOI, repository link, or other resolvable reference identifier."
+          },
+          "description": {
+            "type": "string",
+            "description": "Short explanation of the relevance or contribution of the reference."
+          }
+        },
+        "additionalProperties": false
+      }
     }
   },
   "allOf": [
