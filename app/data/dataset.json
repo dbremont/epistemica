@@ -5218,5 +5218,289 @@
       }
     ]
   }
-}
+}  ,{
+    "id": "framework_decision_theory",
+    "name": "Decision Theory",
+    "category": "epistemicFramework",
+    "inheritanceLevel": 1,
+    "description": "A formal epistemic framework that structures how rational agents select actions under uncertainty by integrating preferences, beliefs, and probabilistic reasoning into decision rules.",
+    "longDescription": "Decision Theory provides a unifying conceptual and mathematical architecture for evaluating choices under uncertainty. It integrates belief representations (e.g., probability distributions), preference orderings (e.g., utility functions), and inference rules (e.g., expected utility maximization). It functions as a meta-structure that organizes multiple epistemic operators such as Bayesian updating, optimization, and counterfactual evaluation. It is foundational in economics, statistics, AI, and cognitive science for modeling rational choice behavior under constraints of uncertainty and limited information.",
+    "functionalRoles": ["framework", "inferential_structure", "normative_model"],
+    "realityDomains": ["economic systems", "cognitive systems", "multi-agent systems"],
+    "historicalContext": {
+      "summary": "Emerges from utility theory, probability theory, and formal economics.",
+      "chronology": [
+        {
+          "year": 1738,
+          "event": "Expected utility foundation (Bernoulli)",
+          "associatedContext": "Risk and utility formalization"
+        },
+        {
+          "year": 1944,
+          "event": "Axiomatic expected utility theory (von Neumann & Morgenstern)",
+          "associatedContext": "Formal decision theory foundation"
+        }
+      ]
+    },
+    "specific": {
+      "frameworkType": "Normative-Probabilistic Decision Framework",
+      "coreAssumptions": "Agents act to maximize expected utility under probabilistic beliefs; preferences are coherent and transitive; uncertainty is representable via probability distributions.",
+      "integrationScope": "Integrates probability theory, utility theory, optimization, and game theory into a unified decision architecture."
+    },
+    "relationships": [
+      {
+        "relationshipFamily": "operational",
+        "relationshipType": "implements_principle",
+        "targetNodeId": "principle_bayesian_coherence",
+        "description": "Operationalizes probabilistic coherence in belief updating and decision evaluation."
+      }
+    ],
+    "metadata": {
+      "tags": ["decision theory", "rational choice", "uncertainty", "utility", "probability"],
+      "confidenceScore": 0.95,
+      "sourceReference": "curated",
+      "createdAt": "2026-05-28T14:00:00Z",
+      "auditTrail": []
+    },
+    "references": [
+      {
+        "title": "Expected Utility Theory (von Neumann & Morgenstern)",
+        "description": "Foundational axiomatic formulation of decision-making under risk."
+      },
+      {
+        "title": "A Treatise on Probability - John Maynard Keynes",
+        "description": "Early formal treatment of probabilistic reasoning in decision contexts."
+      }
+    ]
+  },
+  {
+    "id": "process_decision_making",
+    "name": "Decision-Making",
+    "category": "reality",
+    "inheritanceLevel": 1,
+    "description": "A structured epistemic process in which an agent selects one action from a set of alternatives based on evaluation of expected outcomes, constraints, and objectives.",
+    "longDescription": "Decision-making is a temporally structured epistemic process that transforms a decision problem into an executed action through sequential operations: perception of state, generation of alternatives, evaluation under uncertainty, application of selection criteria, and commitment to action. It is constrained by cognitive limitations, informational incompleteness, and environmental uncertainty. It is the operational realization of decision theory within bounded, real-world settings.",
+    "functionalRoles": ["selection_process", "evaluation_pipeline", "action_commitment"],
+    "realityDomains": ["cognitive systems", "organizational systems", "autonomous agents"],
+    "historicalContext": {
+      "summary": "Studied across psychology, economics, and artificial intelligence as a core rationality process.",
+      "chronology": [
+        {
+          "year": 1955,
+          "event": "Bounded rationality (Herbert Simon)",
+          "associatedContext": "Limits of human decision-making capacity"
+        }
+      ]
+    },
+    "specific": {
+      "processType": "Sequential bounded rational selection process",
+      "inputs": [
+        "belief_state",
+        "utility_structure",
+        "action_space",
+        "constraints"
+      ],
+      "outputs": [
+        "selected_action",
+        "commitment_state"
+      ],
+      "validationMethod": "Outcome evaluation against realized utility and prediction error minimization"
+    },
+    "relationships": [
+      {
+        "relationshipFamily": "operational",
+        "relationshipType": "uses",
+        "targetNodeId": "framework_decision_theory",
+        "description": "Implements decision theory as the guiding evaluative framework."
+      },
+      {
+        "relationshipFamily": "constraint",
+        "relationshipType": "is_bounded_by",
+        "targetNodeId": "constraint_uncertainty",
+        "description": "Constrained by incomplete information and stochastic environments."
+      }
+    ],
+    "metadata": {
+      "tags": ["decision-making", "process", "choice", "bounded rationality"],
+      "confidenceScore": 0.95,
+      "sourceReference": "curated",
+      "createdAt": "2026-05-28T14:00:00Z",
+      "auditTrail": []
+    },
+    "references": [
+      {
+        "title": "Administrative Behavior - Herbert A. Simon",
+        "description": "Foundational work on bounded rationality in decision processes."
+      }
+    ]
+  },
+  {
+    "id": "blueprint_decision_problem",
+    "name": "Decision Problem",
+    "category": "epistemicBlueprint",
+    "inheritanceLevel": 1,
+    "description": "A structured representational schema defining the components of a decision situation: states, actions, outcomes, and evaluation criteria.",
+    "longDescription": "A decision problem is a formal representation schema that specifies the structure of choice under uncertainty. It encodes the state space, action space, transition dynamics (if applicable), and utility or payoff mapping. It serves as the input specification for decision-making processes and decision-theoretic evaluation. It is not itself a computation or inference, but a structured representation enabling such operations.",
+    "functionalRoles": ["problem_specification", "formal_representation", "input_schema"],
+    "realityDomains": ["economic systems", "control systems", "cognitive modeling"],
+    "historicalContext": {
+      "summary": "Evolved from early economic modeling and operations research formulations.",
+      "chronology": []
+    },
+    "specific": {
+      "representationType": "State-Action-Outcome tuple representation",
+      "formalism": "⟨S, A, P, U⟩ formal decision tuple",
+      "expressiveLimits": [
+        "Requires explicit enumeration or parametrization of states and actions",
+        "May struggle with high-dimensional continuous spaces without approximation"
+      ]
+    },
+    "relationships": [
+      {
+        "relationshipFamily": "structural",
+        "relationshipType": "has_input",
+        "targetNodeId": "process_decision_making",
+        "description": "Serves as input specification for decision-making processes."
+      }
+    ],
+    "metadata": {
+      "tags": ["decision problem", "formalization", "representation", "structure"],
+      "confidenceScore": 0.92,
+      "sourceReference": "curated",
+      "createdAt": "2026-05-28T14:00:00Z",
+      "auditTrail": []
+    },
+    "references": [
+      {
+        "title": "Markov Decision Processes in Operations Research",
+        "description": "Formal framework for sequential decision problems under uncertainty."
+      }
+    ]
+  },
+  {
+    "id": "blueprint_action_space",
+    "name": "Action Space",
+    "category": "epistemicBlueprint",
+    "inheritanceLevel": 1,
+    "description": "The structured set of all feasible actions available to an agent within a decision context.",
+    "longDescription": "The action space defines the domain of possible interventions or choices an epistemic agent can enact. It may be discrete, continuous, constrained, or context-dependent. It is a structural component of decision problems and determines the combinatorial and computational complexity of decision-making processes.",
+    "functionalRoles": ["choice_structure", "constraint_definition", "option_set"],
+    "realityDomains": ["control systems", "robotics", "economics"],
+    "historicalContext": {
+      "summary": "Originates in control theory and mathematical decision models.",
+      "chronology": []
+    },
+    "specific": {
+      "representationType": "Set-theoretic or parametric action representation",
+      "formalism": "A ∈ ℝⁿ or discrete set A = {a₁, a₂, ..., aₙ}",
+      "expressiveLimits": [
+        "May become intractable in high-dimensional continuous spaces",
+        "Requires discretization or sampling in complex systems"
+      ]
+    },
+    "relationships": [
+      {
+        "relationshipFamily": "structural",
+        "relationshipType": "composed_of",
+        "targetNodeId": "blueprint_decision_problem",
+        "description": "Forms a component of the decision problem structure."
+      }
+    ],
+    "metadata": {
+      "tags": ["action space", "control", "decision structure"],
+      "confidenceScore": 0.9,
+      "sourceReference": "curated",
+      "createdAt": "2026-05-28T14:00:00Z",
+      "auditTrail": []
+    },
+    "references": [
+      {
+        "title": "Reinforcement Learning: An Introduction - Sutton & Barto",
+        "description": "Standard reference for action spaces in sequential decision systems."
+      }
+    ]
+  },
+  {
+    "id": "blueprint_utility_function",
+    "name": "Utility Function",
+    "category": "epistemicBlueprint",
+    "inheritanceLevel": 1,
+    "description": "A formal mapping from states or outcomes to scalar values representing preference intensity.",
+    "longDescription": "The utility function encodes preference structure over outcomes in a decision system. It assigns scalar values to states or action-outcome pairs, enabling comparison and optimization. It is central to expected utility theory and functions as the evaluative backbone of decision-theoretic reasoning.",
+    "functionalRoles": ["preference_encoding", "evaluation_mapping", "optimization_target"],
+    "realityDomains": ["economics", "decision systems", "AI alignment"],
+    "historicalContext": {
+      "summary": "Developed in utility theory and expected value formalizations.",
+      "chronology": []
+    },
+    "specific": {
+      "representationType": "Scalar-valued preference mapping",
+      "formalism": "U: S → ℝ or U: (S × A) → ℝ",
+      "expressiveLimits": [
+        "Assumes comparability of all outcomes via scalar reduction",
+        "May fail under preference intransitivity or context dependence"
+      ]
+    },
+    "relationships": [
+      {
+        "relationshipFamily": "structural",
+        "relationshipType": "has_parameter",
+        "targetNodeId": "framework_decision_theory",
+        "description": "Serves as a parameterized component within decision theory."
+      }
+    ],
+    "metadata": {
+      "tags": ["utility", "preference", "optimization", "decision theory"],
+      "confidenceScore": 0.94,
+      "sourceReference": "curated",
+      "createdAt": "2026-05-28T14:00:00Z",
+      "auditTrail": []
+    },
+    "references": [
+      {
+        "title": "Theory of Games and Economic Behavior",
+        "description": "Foundational formalization of utility functions in economics."
+      }
+    ]
+  },
+  {
+    "id": "constraint_uncertainty",
+    "name": "Uncertainty Constraint",
+    "category": "epistemicConstraint",
+    "inheritanceLevel": 1,
+    "description": "A limiting condition in which incomplete or stochastic information restricts the determinacy of inference and decision outcomes.",
+    "longDescription": "Uncertainty as a constraint represents epistemic incompleteness regarding states of the world, transition dynamics, or outcome distributions. It induces probabilistic reasoning requirements and limits deterministic prediction. It is a fundamental constraint in all real-world decision systems.",
+    "functionalRoles": ["limitation", "information_bound", "stochastic_constraint"],
+    "realityDomains": ["all empirical systems"],
+    "historicalContext": {
+      "summary": "Central to probability theory and statistical inference.",
+      "chronology": []
+    },
+    "specific": {
+      "constraintType": "Epistemic stochasticity constraint",
+      "boundedResource": "information about true world state",
+      "failureMode": "misestimation, variance explosion, incorrect inference under missing data"
+    },
+    "relationships": [
+      {
+        "relationshipFamily": "constraint",
+        "relationshipType": "constrains",
+        "targetNodeId": "process_decision_making",
+        "description": "Restricts accuracy and determinacy of decision-making processes."
+      }
+    ],
+    "metadata": {
+      "tags": ["uncertainty", "constraint", "stochasticity"],
+      "confidenceScore": 0.96,
+      "sourceReference": "curated",
+      "createdAt": "2026-05-28T14:00:00Z",
+      "auditTrail": []
+    },
+    "references": [
+      {
+        "title": "Probability Theory: The Logic of Science - Jaynes",
+        "description": "Foundational treatment of uncertainty in inference and decision-making."
+      }
+    ]
+  }
 ]
