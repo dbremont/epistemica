@@ -5503,4 +5503,211 @@
       }
     ]
   }
+  ,{
+    "id": "constraint_noGoTheorem",
+    "name": "No-go Theorem",
+    "category": "epistemicConstraint",
+    "inheritanceLevel": 1,
+    "description": "A no-go theorem is a formal mathematical result demonstrating that a particular combination of assumptions necessarily precludes a certain desired outcome, imposing a fundamental limit on what can be achieved within a given framework.",
+    "longDescription": "No-go theorems are foundational in physics, mathematics, logic, and computer science. They establish impossibility results—e.g., the impossibility of faster-than-light communication, the undecidability of the halting problem, or the no-cloning theorem in quantum mechanics. By proving that certain outcomes cannot be realized under specified axioms, they bound the space of valid epistemic claims and guide research away from fruitless directions. They are not mere limitations of current knowledge, but permanent constraints grounded in logical or physical law.",
+    "functionalRoles": [
+      "constraint",
+      "limitation",
+      "theoretical bound"
+    ],
+    "realityDomains": [
+      "physics",
+      "mathematics",
+      "computer science",
+      "quantum information",
+      "logic"
+    ],
+    "historicalContext": {
+      "summary": "The concept of a no-go theorem emerged in early 20th-century foundational debates, notably von Neumann's 1932 attempt to exclude hidden variables from quantum mechanics. It was later sharpened by Bell (1964), Kochen–Specker (1967), and extended to relativistic causality, quantum information, and computability theory.",
+      "chronology": [
+        {
+          "year": 1932,
+          "event": "von Neumann publishes 'Mathematical Foundations of Quantum Mechanics', containing an impossibility proof for hidden-variable theories.",
+          "associatedContext": "quantum foundations"
+        },
+        {
+          "year": 1964,
+          "event": "Bell's theorem demonstrates that no local hidden-variable theory can reproduce all quantum predictions.",
+          "associatedContext": "quantum entanglement, locality"
+        },
+        {
+          "year": 1982,
+          "event": "Wootters, Zurek, and Dieks independently prove the no-cloning theorem.",
+          "associatedContext": "quantum information"
+        }
+      ]
+    },
+    "specific": {
+      "constraintType": "theoretical impossibility",
+      "boundedResource": "space of physically or logically possible states/operations",
+      "failureMode": "contradiction with fundamental axioms if the outcome were achievable"
+    },
+    "relationships": [
+      {
+        "relationshipFamily": "structural",
+        "relationshipType": "subtype_of",
+        "targetNodeId": "cat_epistemicConstraint",
+        "description": "No-go Theorem is a subclass of epistemic constraint that formalizes impossibility within a defined axiomatic system."
+      }
+    ],
+    "metadata": {
+      "tags": [
+        "impossibility",
+        "theorem",
+        "limit",
+        "axiomatic",
+        "foundations"
+      ],
+      "confidenceScore": 1.0,
+      "sourceReference": "curated",
+      "createdAt": "2026-05-28T00:00:00Z",
+      "auditTrail": []
+    },
+    "references": [
+      {
+        "title": "The No-Cloning Theorem",
+        "link": "https://doi.org/10.1038/299802a0",
+        "description": "Seminal paper proving that an arbitrary unknown quantum state cannot be copied perfectly."
+      }
+    ]
+  },
+  {
+    "id": "constraint_noFreeLunchTheorem",
+    "name": "No Free Lunch Theorem",
+    "category": "epistemicConstraint",
+    "inheritanceLevel": 1,
+    "description": "The No Free Lunch (NFL) theorem states that all optimization algorithms perform equally well when averaged over all possible objective functions, implying that no algorithm is universally superior without problem-specific structural assumptions.",
+    "longDescription": "Formulated by Wolpert and Macready in 1997, the NFL theorem for optimization (and its extensions to supervised learning) demonstrates that for any pair of algorithms, the distribution of performance across all possible cost functions is identical. Thus, any improvement on one class of problems is exactly paid for by degradation on another. This theorem binds the epistemic practice of algorithm selection by forcing practitioners to incorporate domain knowledge or inductive biases. It is a pure constraint, not a tool or a standard, as it limits what optimization processes can achieve irrespective of computational infrastructure.",
+    "functionalRoles": [
+      "constraint",
+      "algorithmic bound",
+      "domain-independent limitation"
+    ],
+    "realityDomains": [
+      "optimization",
+      "machine learning",
+      "evolutionary computation",
+      "search"
+    ],
+    "historicalContext": {
+      "summary": "Published by David Wolpert and William Macready in 1997, the NFL theorems provided a rigorous formalization of the long-held intuition that there is no universally best optimizer. Subsequent work extended the results to co-evolution, supervised learning, and other search domains.",
+      "chronology": [
+        {
+          "year": 1997,
+          "event": "Wolpert and Macready publish 'No Free Lunch Theorems for Optimization' in IEEE Transactions on Evolutionary Computation.",
+          "associatedContext": "optimization theory, evolutionary algorithms"
+        }
+      ]
+    },
+    "specific": {
+      "constraintType": "algorithmic performance bound",
+      "boundedResource": "expected optimization performance across all objective functions",
+      "failureMode": "vanishing advantage of any algorithm over random search when problem distribution is uniform"
+    },
+    "relationships": [
+      {
+        "relationshipFamily": "structural",
+        "relationshipType": "subtype_of",
+        "targetNodeId": "cat_epistemicConstraint",
+        "description": "The No Free Lunch Theorem is a concrete instance of an epistemic constraint bounding algorithmic generalization."
+      }
+    ],
+    "metadata": {
+      "tags": [
+        "optimization",
+        "limit",
+        "theorem",
+        "NFL",
+        "generalization"
+      ],
+      "confidenceScore": 1.0,
+      "sourceReference": "curated",
+      "createdAt": "2026-05-28T00:00:00Z",
+      "auditTrail": []
+    },
+    "references": [
+      {
+        "title": "No Free Lunch Theorems for Optimization",
+        "link": "https://doi.org/10.1109/4235.585893",
+        "description": "Original paper establishing the foundational impossibility result for optimization algorithms."
+      }
+    ]
+  },
+  {
+    "id": "blueprint_HJBEquation",
+    "name": "Hamilton-Jacobi-Bellman Equation",
+    "category": "epistemicBlueprint",
+    "inheritanceLevel": 1,
+    "description": "The Hamilton-Jacobi-Bellman (HJB) equation is a partial differential equation that provides a necessary and sufficient condition for optimality in continuous-time optimal control problems, expressing the value function in terms of system dynamics, cost function, and control policy.",
+    "longDescription": "The HJB equation arises from Bellman's principle of optimality applied to continuous-time systems. It is a formal encoding that defines the optimal value function as the solution to a PDE. As an epistemic blueprint, it prescribes the syntactic structure that a valid optimal control formulation must satisfy; it does not itself perform optimization but serves as the representational scheme into which specific problem instances (dynamic models, cost functionals) are instantiated. Its expressive limits include the curse of dimensionality and smoothness requirements, which motivate approximate solution operators.",
+    "functionalRoles": [
+      "blueprint",
+      "optimality encoding",
+      "equation schema"
+    ],
+    "realityDomains": [
+      "control theory",
+      "optimal control",
+      "dynamic programming",
+      "mathematics",
+      "engineering",
+      "economics"
+    ],
+    "historicalContext": {
+      "summary": "Evolving from the classical Hamilton-Jacobi equation of mechanics, the HJB equation was developed in the mid-20th century after Richard Bellman introduced dynamic programming. It became a cornerstone of continuous-time optimal control, alongside Pontryagin's maximum principle.",
+      "chronology": [
+        {
+          "year": 1950,
+          "event": "Richard Bellman develops the principle of optimality and dynamic programming.",
+          "associatedContext": "applied mathematics, control systems"
+        },
+        {
+          "year": 1960,
+          "event": "The Hamilton-Jacobi-Bellman equation is formalized for continuous-time stochastic and deterministic optimal control.",
+          "associatedContext": "Rudolf Kalman, Pontryagin's maximum principle"
+        }
+      ]
+    },
+    "specific": {
+      "representationType": "Partial Differential Equation",
+      "formalism": "∂V/∂t + min_{u ∈ U} [L(x,u,t) + (∂V/∂x)·f(x,u,t)] = 0",
+      "expressiveLimits": [
+        "requires continuous differentiability of the value function",
+        "curse of dimensionality in numerical discretization",
+        "assumes Markovian dynamics and full state observability"
+      ]
+    },
+    "relationships": [
+      {
+        "relationshipFamily": "structural",
+        "relationshipType": "subtype_of",
+        "targetNodeId": "cat_epistemicBlueprint",
+        "description": "The HJB equation is a specific encoding format (partial differential equation blueprint) within optimal control."
+      }
+    ],
+    "metadata": {
+      "tags": [
+        "optimal control",
+        "PDE",
+        "dynamic programming",
+        "blueprint"
+      ],
+      "confidenceScore": 1.0,
+      "sourceReference": "curated",
+      "createdAt": "2026-05-28T00:00:00Z",
+      "auditTrail": []
+    },
+    "references": [
+      {
+        "title": "Dynamic Programming",
+        "link": "https://press.princeton.edu/books/paperback/9780691146683/dynamic-programming",
+        "description": "Bellman’s foundational text introducing the principle of optimality and the value function approach."
+      }
+    ]
+  }
 ]
