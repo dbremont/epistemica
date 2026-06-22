@@ -1,8 +1,14 @@
-# Meta Tool Spec
+# Conceptual Structure Typing Epistemic Practice
 
-## Strategy
+> aka: Cognitive Cartography, Noetic Topography, Cognitectura, Epistetura.
 
-- For the concept to analyze - we need to match it with a category here:
+> A taxonomy (conceptual structure) that renders the epistemic practice of epistemic agents intelligible.
+
+> Epistemic practice can be characterized as the structured process by which an observer acquires, encodes, transforms, validates, and applies epistemic artifacts about a target domain.
+
+## Formulation
+
+> Which are the sets of concept that characterize  epistemic practice? How to capture all of this concept in a database?
 
 | **Category** | **Description** | **Instance(s)** |
 | --- | --- | --- |
@@ -24,104 +30,60 @@
 | **Epistemic Operator** | Formal or procedural mechanism used to construct, transform, representation form ( abstract artifact)or validate epistemic artifacts. | Algebraic manipulation, statistical inference, optimization algorithms, simulation methods, measurement procedures,  generic or abstract class of artifact or let’s called it by representational form. |
 | **Meta-Epistemic Layer** | Supporting material, energetic, social, and institutional environment that enables storage, computation, measurement, and communication of artifacts over time. | Sensors (thermocouples, cameras), laboratories (clean rooms), software systems (Jupyter, Git), databases, scientific publications, power grid, funding agencies, data repositories. |
 
-## General
+### Which are the edged types?
 
-> Base on the categpry that the concept belongs to: 
+> Note: The specific components will be formulated in the subsequent sections.
 
-> Our goal is to create a  **Interactive Epistemic Notebook**: a controlled experimental environment for epistemic tools, where understanding is achieved through structured interaction with the tool’s formal, computational, and behavioral structure.
+| **Relation Family** | **Relation Type** | **Description** | **Relation Signature** | **Use** |
+| --- | --- | --- | --- | --- |
+| Representational | observes | Captures or measures a domain snapshot through perception or instrumentation. | Observation Interface → Domain Snapshot | Empirical sensing, experiments, perception systems |
+| Representational | encodes | Transduces observations into persistent epistemic artifacts. | Observation Interface / Agent → Epistemic Artifact | Data acquisition, memory, recording |
+| Representational | expresses_in | Instantiates an artifact in a specific representational substrate or encoding format. | Epistemic Artifact → Encoding Format | Formal notation, code, schemas |
+| Representational | formalizes | Converts raw, implicit, or informal content into structured epistemic representation. | Tool / Agent → Epistemic Artifact | Ontologies, models, formal systems |
+| Representational | abstracts_from | Extracts generalized structures or principles from lower-level artifacts. | Artifact / Theory → Lower-Level Artifact | Theory building, pattern extraction |
+| Structural | composed_of | Defines constituent internal components, operations, or stages of an entity. | Tool / Process / Artifact → Subcomponent | Tool architecture, workflow decomposition |
+| Structural | has_parameter | Specifies formal adjustable variables or governing parameters. | Tool / Model → Parameter | Configuration, tuning, optimization |
+| Structural | has_input | Defines required epistemic inputs. | Tool / Process → Input Artifact | Pipeline specification |
+| Structural | has_output | Defines produced outputs. | Tool / Process → Output Artifact | Output specification |
+| Structural | implements_principle | Operationalizes an underlying formal or mathematical principle. | Tool → Principle | Fourier methods, Bayesian inference |
+| Operational | uses | Agent or higher-order system employs a tool. | Agent / Tool → Tool | Scientific inquiry, automation |
+| Operational | performs | Agent executes a process. | Agent → Process | Research, experimentation |
+| Operational | acts_on | Tool, act, or process manipulates an artifact or domain. | Tool / Process / Act → Artifact / Domain | Data processing, intervention |
+| Operational | produces | Generates a new artifact or epistemic output. | Agent / Tool / Process → Artifact | Model creation, inference products |
+| Operational | transforms | Converts one artifact into another epistemic state. | Tool / Process → Artifact | Signal processing, inference |
+| Operational | predicts | Produces projected future epistemic claims. | Model / Artifact → Future State | Forecasting, simulation |
+| Operational | decomposes | Breaks an artifact into constituent analyzable components. | Tool → Artifact Components | Fourier analysis, PCA |
+| Operational | integrates | Combines multiple epistemic sources into unified artifacts. | Tool / Process → Unified Artifact | Fusion, synthesis |
+| Operational | estimates | Infers latent states, parameters, or distributions. | Tool / Process → Estimated Artifact | Bayesian methods, econometrics |
+| Normative - Validation | conforms_to | Satisfies standards or evaluative criteria. | Artifact / Tool / Process → Standard | Scientific validity |
+| Normative - Validation | evaluated_by | Subject is assessed by evaluative mechanism. | Artifact / Process → Standard / Tool | Benchmarking, review |
+| Normative - Validation | validates | Confirms adequacy or correctness. | Process / Evidence → Artifact | Verification, replication |
+| Normative - Validation | refutes | Disconfirms or falsifies a claim. | Evidence / Feedback → Artifact | Falsification |
+| Normative - Validation | supports | Provides evidential reinforcement. | Evidence / Artifact → Artifact | Justification |
+| Constraint | is_bounded_by | Subject exists under limiting conditions. | Artifact / Tool / Process → Constraint | Complexity, uncertainty |
+| Constraint | constrains | Restricts epistemic operation, expressibility, or validity. | Constraint / Format → Subject | Formal, practical, methodological limitations |
+| Constraint | distorts | Introduces systematic deviation or corruption. | Constraint → Artifact / Observation | Bias, noise |
+| Constraint | depends_on | Requires enabling conditions. | Subject → Dependency | Infrastructure, quality prerequisites |
+| Dynamic - Feedback | triggers | Feedback initiates epistemic adaptation. | Feedback → Process / Artifact | Revision, anomaly correction |
+| Dynamic - Feedback | updates | Revises epistemic state based on new evidence. | Evidence / Feedback → Artifact / Process | Learning, Bayesian updating |
+| Dynamic - Feedback | feeds_back_to | Recursive return of output into prior stages. | Output → Prior Process | Adaptive loops |
+| Dynamic - Feedback | iterates_on | Repeatedly refines prior artifacts or processes. | Process → Prior Artifact / Process | Continuous improvement |
+| Dynamic - Feedback | evolves_into | Develops into more advanced epistemic form. | Artifact / Process → Advanced Artifact / Process | Theory maturation |
+| Infrastructure | provides | Supplies enabling material, computational, or sensory resources. | Infrastructure → Agent / Tool / Process | Labs, compute systems |
+| Infrastructure | hosts | Sustains persistent epistemic systems or agents. | Institution / Infrastructure → Agent / System | Universities, organizations |
+| Infrastructure | stores | Preserves epistemic artifacts over time. | Infrastructure → Artifact | Archives, repositories |
+| Infrastructure | communicates | Transmits artifacts across epistemic agents. | Infrastructure / Artifact → Agent / Community | Journals, APIs |
+| Infrastructure | standardizes | Establishes shared representational or methodological conventions. | Institution / Infrastructure → Standard / Format | Protocols, schemas |
+| Meta-Epistemic | monitors | Tracks epistemic system quality or performance. | Meta-System → E |  |
 
-Non-Functional Requirements:
 
-* **Cognitive Clarity**
-  The interface must minimize ambiguity and reduce cognitive load while preserving formal precision.
-
-* **Progressive Disclosure**
-  Complexity should be revealed incrementally (from intuition → formalism → edge cases).
-
-* **Interactivity Latency**
-  All interactions (parameter changes, simulations) must respond in near real-time.
-
-* **Determinism & Reproducibility**
-  All outputs must be reproducible given the same inputs and parameters.
-
-* **Epistemic Transparency**
-  Assumptions, limitations, and transformation logic must be explicitly exposed.
-
-* **Modularity**
-  Components (visualizations, simulations, explanations) should be composable and independently testable.
-
-* **Observability**
-  Internal states (intermediate variables, transformations) should be inspectable.
-
-Functional Requirements:
-
-* **Conceptual Layer**
-
-  * Provide minimal and precise definitions of the tool
-  * Explicitly state the epistemic role and scope
-
-## Interaction Layer
-
-> ...
-
-* **Purpose**
-  The interaction layer defines how the user **engages with the epistemic structure** of the tool through controlled, observable manipulations.
-
-* **Core Principle**
-  Interaction is not for exploration alone, but for **structured epistemic intervention**: every action should reveal how the tool transforms inputs into outputs.
-
-* **Components**
-
-  * **Parameter Controls**
-    Sliders, inputs, and selectors to modify the tool’s defining variables
-  * **Execution Controls**
-    Step, run, pause, and reset mechanisms for procedural inspection
-  * **State Inspection**
-    Direct access to intermediate states and internal variables
-  * **Linked Views**
-    Synchronized visualizations (e.g., input space ↔ transformation ↔ output artifact)
-  * **Constraint Injection**
-    Ability to enforce or violate assumptions deliberately
-
-* **Design Constraints**
-
-  * All interactions must produce **immediate, interpretable changes**
-  * The mapping between action → transformation → artifact must be **explicit**
-  * Hidden state is minimized; internal dynamics are **externally visible**
-
-### Objective
-
-* Our main goal is to construct a **set of interactive tools** that enable a human to:
-
-  * **Interrogate** the epistemic tool
-    (What does it actually compute? Under what assumptions?)
-
-  * **Manipulate** its structure
-    (How do parameter changes alter the transformation?)
-
-  * **Observe** its behavior
-    (How does the output evolve under different inputs and conditions?)
-
-  * **Diagnose** its limits
-    (When does it fail, and why?)
-
-  * **Internalize** its mechanism
-    (Develop a correct mental model of its operational logic)
-
-### Outcome
-
-The interaction layer should transform passive understanding into **active epistemic control**:
-
-> The user should be able not only to *use* the tool, but to **predict its behavior, detect its failure modes, and reason about its outputs before execution**.
-
-## Technology Stack
-
-* HTML
-* CSS
-* JS
-* No Frameworks, Like React
-* Can Used Libraries - But Be Minimalistic.
 
 ## References
 
-* [Epistemic Tool Template](https://www.notion.so/Epistemic-Tool-Template-2e5c0f5171ec800fa9caf91bb16bcab9?source=copy_link)
+- https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)
+- https://www.decisiondeskhq.com/
+- https://projects.economist.com/us-2020-forecast/president
+- https://web.archive.org/web/20250305183642/
+- https://projects.fivethirtyeight.com/
+- https://cosmograph.app/
+- https://en.wikipedia.org/wiki/Eigenvector_centrality

@@ -353,7 +353,7 @@
       "then": {
         "properties": {
           "specific": {
-            "$ref": "#/$defs/c"
+            "$ref": "#/$defs/realitySpecific"
           }
         }
       }
