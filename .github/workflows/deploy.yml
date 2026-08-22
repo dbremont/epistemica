@@ -30,8 +30,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/csiglab/arbitriologia:${{ github.sha }}
-            ghcr.io/csiglab/arbitriologia:latest
+            ghcr.io/dbremont/epistemica:${{ github.sha }}
+            ghcr.io/dbremont/epistemica:latest
 
 #  deploy:
 #    name: Deploy to server
