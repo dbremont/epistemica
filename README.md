@@ -35,7 +35,20 @@ The app is published as a Docker image on GHCR (`ghcr.io/dbremont/epistemica:lat
    python3 bin/seed_couchdb.py
    ```
 
-3. Run `./deploy.sh` — it pulls the latest image from GHCR and starts the container with `--network host`, mounting `.env` into it.
+3. Precompute the graph layout:
+
+   ```sh
+   python3 bin/layout.py
+   ```
+
+   Run it again whenever `app/data/data.json` changes. The result is stored in
+   both the CouchDB `layout` doc (primary, served via `GET /api/layout`) and
+   the static `app/data/layout.json` (fallback). `--no-db` writes the file
+   only; `--source file` reads nodes from `data.json` instead of CouchDB. The
+   renderers read positions once at load and keep the graph static — no live
+   force simulation.
+
+4. Run `./deploy.sh` — it pulls the latest image from GHCR and starts the container with `--network host`, mounting `.env` into it.
 
    The port defaults to **8010**; override with `EPISTEMICA_PORT=<port> ./deploy.sh`.
 
@@ -45,6 +58,7 @@ Once deployed, open <http://localhost:8010>.
 
 - App: `http://localhost:8010/index.html`
 - Health check: `GET http://localhost:8010/api/health`
+- Precomputed graph layout: `GET http://localhost:8010/api/layout` (`X-Layout-Source` header reports `db` or `file`)
 - Graph save endpoint (set in editor Settings → "Backend Sync" → "Backend Save URL"): `POST http://localhost:8010/api/graph/save`
 
 ## References
