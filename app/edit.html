@@ -5711,27 +5711,36 @@ function draw() {
 
     /* ── LAYER 2: Edges (midground, drawn before nodes) ── */
     ctx.lineCap = 'round';
+    const focusNode = hoveredNode || selectedNode;
     for (let i = 0; i < edges.length; i++) {
-        if (!edgeShouldShow(i, band)) continue;
         const e = edges[i];
         const s = nodeMap[e.source], t = nodeMap[e.target];
         if (!s || !t) continue;
+        const incident = focusNode && (focusNode.id === e.source || focusNode.id === e.target);
+        // A hover/selection always reveals its links, whatever the zoom band.
+        if (!incident && !edgeShouldShow(i, band)) continue;
         const ss = worldToScreen(s.x, s.y), ts = worldToScreen(t.x, t.y);
         const w = edgeWeights[i];
         const baseOpacity = clamp((w / maxEdgeWeight) * 0.3, 0.1, 0.3);
 
-        const incident = (hoveredNode && (hoveredNode.id === e.source || hoveredNode.id === e.target)) ||
-                         (selectedNode && (selectedNode.id === e.source || selectedNode.id === e.target));
-
         let strokeStyle, lineWidth;
         if (incident) {
-            // Highlight: tint with hovered/selected community colour, opacity 0.6
-            const ref = hoveredNode || selectedNode;
-            const tint = getCategoryColor(ref.category);
-            strokeStyle = hexToRGBA(tint, 0.6);
-            lineWidth = clamp(1.0 * cam.z, 0.6, 1.6);
-        } else if (hoveredNode) {
-            // Dim others to 0.05 when hovering
+            // Unmissable highlight: glow underlay + bright tinted stroke.
+            const tint = getCategoryColor(focusNode.category);
+            ctx.save();
+            ctx.shadowColor = hexToRGBA(tint, 0.9);
+            ctx.shadowBlur = 10;
+            ctx.beginPath();
+            ctx.moveTo(ss.x, ss.y);
+            ctx.lineTo(ts.x, ts.y);
+            ctx.strokeStyle = hexToRGBA(tint, 0.3);
+            ctx.lineWidth = clamp(5.5 * cam.z, 3.5, 8);
+            ctx.stroke();
+            ctx.restore();
+            strokeStyle = hexToRGBA(tint, 0.95);
+            lineWidth = clamp(2.5 * cam.z, 1.6, 3.5);
+        } else if (focusNode) {
+            // Recede everything else while hovering/selecting
             strokeStyle = hexToRGBA('#4a4a4a', 0.05);
             lineWidth = clamp(0.5 * cam.z, 0.3, 1.0);
         } else {
@@ -5743,7 +5752,13 @@ function draw() {
         ctx.lineTo(ts.x, ts.y);
         ctx.strokeStyle = strokeStyle;
         ctx.lineWidth = lineWidth;
+        if (incident) {
+            // Animated dash flow so the selected links catch the eye
+            ctx.setLineDash([10 * cam.z, 8 * cam.z]);
+            ctx.lineDashOffset = -(now / 30) % (18 * cam.z);
+        }
         ctx.stroke();
+        if (incident) ctx.setLineDash([]);
     }
 
     /* Potential link line (link mode) */
@@ -5755,6 +5770,15 @@ function draw() {
     }
 
     /* ── LAYER 3: Nodes (foreground, matte velvet) ── */
+    // When hovering/selecting, non-neighbors recede so the focus links stand out
+    let focusNeighbors = null;
+    if (focusNode) {
+        focusNeighbors = new Set([focusNode.id]);
+        for (const e of edges) {
+            if (e.source === focusNode.id) focusNeighbors.add(e.target);
+            else if (e.target === focusNode.id) focusNeighbors.add(e.source);
+        }
+    }
     // First pass: drop shadows for all nodes (lifts them from canvas)
     ctx.save();
     for (let i = 0; i < nodes.length; i++) {
@@ -5765,6 +5789,7 @@ function draw() {
         const r = Math.max(2, baseR * cam.z);
         // Cull offscreen
         if (s.x + r + 20 < 0 || s.x - r - 20 > W || s.y + r + 20 < 0 || s.y - r - 20 > H) continue;
+        ctx.globalAlpha = !focusNeighbors || focusNeighbors.has(n.id) ? 1 : 0.25;
         const shadowBlur = isH ? 12 : 6;
         const shadowOffset = isH ? 4 : 2;
         ctx.shadowColor = `rgba(0,0,0,${isH ? 0.7 : 0.5})`;
@@ -5786,6 +5811,7 @@ function draw() {
         const r = Math.max(2, (baseR + (isH ? 1 : 0)) * cam.z);
         if (s.x + r + 20 < 0 || s.x - r - 20 > W || s.y + r + 20 < 0 || s.y - r - 20 > H) continue;
         const color = getCategoryColor(n.category);
+        ctx.globalAlpha = !focusNeighbors || focusNeighbors.has(n.id) ? 1 : 0.25;
 
         // Matte solid fill — velvet buttons
         ctx.fillStyle = color;
@@ -5831,6 +5857,7 @@ function draw() {
             ctx.stroke();
             ctx.setLineDash([]);
         }
+        ctx.globalAlpha = 1;
     }
 
     /* ── LAYER 4: Labels (parchment text with protective dark mask) ── */
