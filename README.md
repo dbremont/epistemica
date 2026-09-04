@@ -28,12 +28,15 @@ The app is published as a Docker image on GHCR (`ghcr.io/dbremont/epistemica:lat
    COUCHDB_PASSWORD=...
    ```
 
-2. Initialize CouchDB once (CORS + database creation) and seed the graph data:
+2. Bootstrap CouchDB once (create the database + clear its `_security`) and seed the graph data. Adapt host/port to `COUCHDB_URL`/`COUCHDB_DB` in `.env`; add `-u user:pass` when the admin party is disabled:
 
    ```sh
-   python3 bin/couchdb_setup.py
+   curl -X PUT http://127.0.0.1:5984/epistemica
+   curl -X PUT http://127.0.0.1:5984/epistemica/_security -H 'Content-Type: application/json' -d '{}'
    python3 bin/seed_couchdb.py
    ```
+
+   The first curl creates the `epistemica` DB, the second clears `_security` so the sync server can read anonymously. CORS must stay disabled (the CouchDB default) so the browser can never reach the DB directly.
 
 3. Precompute the graph layout:
 
@@ -54,10 +57,11 @@ The app is published as a Docker image on GHCR (`ghcr.io/dbremont/epistemica:lat
 
 ### Usage
 
-Once deployed, open <http://localhost:8010>.
+Once deployed, open <http://localhost:8010>. The sync server is the only frontend-facing surface — the browser never talks to CouchDB directly (`app/js/api.js` hits these endpoints).
 
 - App: `http://localhost:8010/index.html`
 - Health check: `GET http://localhost:8010/api/health`
+- Graph nodes (flat JSON array, `_id`/`_rev` stripped): `GET http://localhost:8010/api/nodes`
 - Precomputed graph layout: `GET http://localhost:8010/api/layout` (`X-Layout-Source` header reports `db` or `file`)
 - Graph save endpoint (set in editor Settings → "Backend Sync" → "Backend Save URL"): `POST http://localhost:8010/api/graph/save`
 

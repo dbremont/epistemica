@@ -114,11 +114,17 @@ Tech Stack:
 
 Rules:
 
-- The data should be loaded from json.
+- The data is served by the sync server (`bin/sync.py`) — the only frontend-facing surface (`GET /api/nodes`, `GET /api/layout` via `app/js/api.js`). The browser never talks to CouchDB directly; CORS stays disabled on the DB.
 - The view should be separate from the data.
 - Be able to handle 100,000 nodes.
 - Handle partial load of the element.
 - `...`
+
+AI Assist:
+
+- The editor ships LLM-assisted authoring against a configurable OpenAI-compatible endpoint (default DeepSeek; token + model in Settings). The AI token lives only in the browser; the backend stays data-only (no AI endpoints, no key on the server).
+- *AI Improve/Generate* (Enhance button) rewrites the selected node via a schema-bearing prompt (`relationships` is always stripped and preserved), shows a diff, and applies on review. Two transports: direct API calls (`Generate (API)`), or the manual **Copy Prompt** flow — copy the identical prompt into any external LLM chat and paste its JSON back (*Use Pasted Result*) through the same diff + Apply path. No API key is required for the manual transport.
+- *AI Discover Relations* (Find Relations) suggests cross-node links for curation (API-only).
 
 1. Design Philosophy
 
